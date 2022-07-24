@@ -29,7 +29,7 @@ const StartQuiz = (props) => {
   
       <div className="col s6">
         <div className="container center-align">
-          <a className="dropdown-trigger btn-large"  data-target="dropdown1">
+          <a className="dropdown-trigger btn-large" href="#"  data-target="dropdown1">
             {props.selectedTechnology == null
               ? "Select Technology"
               : props.selectedTechnology}
@@ -41,7 +41,7 @@ const StartQuiz = (props) => {
       </div>
       <div className="col s6 ">
         <div className="container center-align">
-      <a className="waves-effect btn-large" onClick={()=>props.onQuizStart()}><i className="material-icons right">send</i>Start Quiz</a>
+      <a className="waves-effect btn-large" href="#" onClick={()=>props.onQuizStart()}><i className="material-icons right">send</i>Start Quiz</a>
       </div>
       </div>
     
