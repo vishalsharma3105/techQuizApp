@@ -37,16 +37,16 @@ const Score = (props) => {
               switch (true) {
                 case props.score >= 80:
                   return `It's a Great Score!`;
-                  break;
-                case ( props.Score == 60):
+                
+                case ( props.Score === 60):
                   return "You can do better";
-                case (props.score < 60 && props.Score == 40):
+                case (props.score < 60 && props.Score === 40):
                   return "Keep working on learning";
                 case (props.score < 40) :
                   return "You need to work hard my Buddy";
                 default:
                     return "Looks Like some issue  at our end";
-                  break;
+                 
               }
             })()}
           </h1>
