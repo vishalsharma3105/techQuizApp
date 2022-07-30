@@ -38,7 +38,8 @@ const Score = (props) => {
                 case props.score >= 80:
                   return `It's a Great Score!`;
                 
-                case ( props.Score >= 60 && props.score<80):
+                case (
+                  +props.Score >= 60 && props.score<80):
                   return "You can do better";
                 case (props.score < 60 && props.Score >= 40):
                   return "Keep working on learning";

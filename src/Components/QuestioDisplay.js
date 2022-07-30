@@ -4,7 +4,9 @@ import { useState } from "react";
 const QuestionDisplay = (props) => {
 
 
+
   const [currentAnswer, setCurrentAnswer] = useState(null);
+ 
   const getQuestion = ()=>{
     
         if(props.currentQuestion){
@@ -12,15 +14,16 @@ const QuestionDisplay = (props) => {
         }
         return '';
   }
-
+//
 const checkOptionValid = (answer)=>{
-  
+
   if(props.currentQuestion)
   {
       if(props.currentQuestion.answers[answer]){
+
         return (<p className="center-align">
           <label>
-            <input name="group1" type="radio" value={answer} />
+            <input name="group1" type="radio" value={answer} onChange={()=>{}} checked={currentAnswer===answer ? true : false}  />
             <span>{props.currentQuestion.answers[answer]}</span>
           </label>
         </p>)
@@ -33,13 +36,17 @@ const checkOptionValid = (answer)=>{
       </p>);
     }
   }
-    
+
+
+
+
     const onValueChange=(event)=> {
       setCurrentAnswer(event.target.value);
       
-      console.log('value of radio button',event.target.value);
+    //  console.log('value of radio button',event.target.value);
+      
     }
-    
+
 
   return (
     <div className="container">
@@ -53,7 +60,7 @@ const checkOptionValid = (answer)=>{
       <div className="container" >
       <div className="row">
         <div className="col s1"></div>
-        <div className="col s8" onChange={onValueChange}>
+        <div className="col s8" onChange={onValueChange}  >
           <div className="row">
             <div className="col 6">
             {checkOptionValid('answer_a')}
@@ -76,7 +83,7 @@ const checkOptionValid = (answer)=>{
       <div className="row">
         <div className="col s3"></div>
         <div className="col s6">
-        <button className="btn waves-effect  btn-large" type="submit" name="action" onClick={()=>{props.moveToNextQuestion(currentAnswer); }}  >Submit
+        <button className="btn waves-effect  btn-large" type="submit" name="action" onClick={()=>{ !currentAnswer ? alert('Please select atleast one answer') : props.moveToNextQuestion(currentAnswer); setCurrentAnswer(null) }}  >Submit
                 <i className="material-icons right">send</i>
         </button>
         </div>

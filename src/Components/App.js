@@ -6,6 +6,8 @@ import QuizAPI from "../api/QuizAPI";
 import QuestionDisplay from "./QuestioDisplay";
 import Score from "./Score";
 
+
+
 const techOptions = ["Linux", "DevOps", "Docker"];
 
 const App = () => {
@@ -21,6 +23,7 @@ const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [answerArr, setAnswerArr] = useState([]);
   const [score, setScore] = useState(0);
+ 
 
   const onSelectTechnology = (tech) => {
     setSelectedTechnology(tech);
@@ -29,7 +32,7 @@ const App = () => {
   const onStartQuizClick = async () => {
     const response = await QuizAPI.get("/questions", {
       params: {
-        apiKey: "sHKf2O9bd1zsYmGSuAJHTeeBvGnZJBH1b9T8PLNU",
+        apiKey: process.env.REACT_APP_API_KEY,
          category: selectedTechnology,
         limit: 10,
       },
@@ -49,14 +52,16 @@ const App = () => {
     return score;
   };
 
-  const moveToNextQuestion = (prevAnswer) => {
-    debugger;
+  const moveToNextQuestion = (prevAnswer ) => {
+ 
     if (answerArr.length < 10) {
       setAnswerArr([...answerArr, prevAnswer]);
     } else {
+      debugger;
       setScore(calculateScore());
     }
-    console.log("answer array", answerArr);
+    
+   
 
     // setCurrentQuestion(quizSet.data[answerArr.length]);
   };
@@ -85,6 +90,7 @@ const App = () => {
         <QuestionDisplay
           currentQuestion={currentQuestion}
           moveToNextQuestion={moveToNextQuestion}
+    
         />
       ) : (
         <Score score={score} />
