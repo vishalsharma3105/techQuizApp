@@ -11,6 +11,8 @@ import Score from "./Score";
 const techOptions = ["Linux", "DevOps", "Docker"];
 
 const App = () => {
+
+
   const myStyle = {
     //     backgroundImage:
     // "url('https://media.istockphoto.com/photos/gears-on-white-background-minimal-teamwork-concept-picture-id1214212832?b=1&k=20&m=1214212832&s=170667a&w=0&h=UCgyclbmrx85ScoRdh2yRYVUL2p3XscdZRlHKbdoAXA=')",
@@ -32,7 +34,7 @@ const App = () => {
   const onStartQuizClick = async () => {
     const response = await QuizAPI.get("/questions", {
       params: {
-        apiKey: process.env.REACT_APP_API_KEY,
+        
          category: selectedTechnology,
         limit: 10,
       },
