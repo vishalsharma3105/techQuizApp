@@ -2,10 +2,9 @@ import Header from "./Header";
 import StartQuiz from "./StartQuiz";
 import { useEffect, useState } from "react";
 import React from "react";
-//import QuizAPI from "../api/QuizAPI";
+import QuizAPI from "../api/QuizAPI";
 import QuestionDisplay from "./QuestioDisplay";
 import Score from "./Score";
-//import netlifyAPI from '../netlify/functions/quizAppNetlify' 
 
 
 
@@ -33,18 +32,13 @@ const App = () => {
   };
 
   const onStartQuizClick = async () => {
-    debugger;
-    const url =  "../netlify/functions/quizAppNetlify"
-    const response = await fetch(url).then((res)=>res.json());
-    //   , {
-    
-    //   params: {
+    const response = await QuizAPI.get("/questions", {
+      params: {
         
-    //      category: selectedTechnology,
-    //     limit: 10,
-    //   },
-    // }).then((res)=>res.json());
-    debugger;
+         category: selectedTechnology,
+        limit: 10,
+      },
+    });
     setQuizSet(response);
   };
 
